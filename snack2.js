@@ -45,17 +45,14 @@ const books = [
   },
 ];
 
-const authors = books.map((b) => b.author);
+const availableBooks = books.map((b) => b);
+console.log(availableBooks);
 
-function isAdult(e) {
-  return e.age >= 18;
-}
+const discountedBooks = availableBooks.map((b) => {
+  return (parseFloat(b.price) * 20) / 100;
+});
 
-const areAuthorsAdults = authors.every(isAdult);
-console.log(areAuthorsAdults);
+const fullPricedBooks = discountedBooks.filter((b) => b == parseInt(b));
 
-areAuthorsAdults
-  ? authors.sort((a, b) => a.age - b.age)
-  : authors.sort((a, b) => b.age - a.age);
-
-console.log(authors);
+console.log(discountedBooks);
+console.log(fullPricedBooks);
